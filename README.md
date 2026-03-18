@@ -54,7 +54,7 @@ app/
 
 1. Clonar o repositório
 
-git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+git clone https://github.com/gadielalmeida/api-estoque.git
 
 2. Acessar a pasta
 
@@ -132,4 +132,4 @@ Este projeto foi desenvolvido com o objetivo de praticar desenvolvimento backend
 👨‍💻 Autor
 
 Gadiel Almeida
-GitHub: https://github.com/SEU-USUARIO
+GitHub: https://github.com/gadielalmeida
