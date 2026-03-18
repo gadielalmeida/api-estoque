@@ -1,135 +1,134 @@
 📦 API de Controle de Estoque
 
-API REST desenvolvida em Python para gerenciamento de produtos em estoque, permitindo operações completas de CRUD (Create, Read, Update e Delete).
+API REST desenvolvida com FastAPI para gerenciamento de produtos em estoque.
 
 ---
 
-🚀 Tecnologias utilizadas
+🚀 Funcionalidades
+
+- Criar produtos
+- Listar produtos
+- Buscar produto por ID
+- Atualizar produto
+- Deletar produto
+- Paginação com controle de página e limite
+- Filtro por nome de produto
+- Ordenação por preço, quantidade e nome (asc/desc)
+- Resposta estruturada com metadados (total, page, limit)
+
+---
+
+🛠️ Tecnologias utilizadas
 
 - Python
 - FastAPI
 - SQLAlchemy
 - SQLite
 - Uvicorn
-- Swagger (documentação automática)
-
----
-
-📌 Funcionalidades
-
-- Criar produtos
-- Listar produtos
-- Buscar produto por ID
-- Atualizar produtos
-- Deletar produtos
-
----
-
-🧠 Conceitos aplicados
-
-- API REST
-- Estrutura em camadas (models, schemas, services)
-- ORM com SQLAlchemy
-- Banco de dados relacional (SQLite)
-- Documentação automática com Swagger
-- Boas práticas de organização de código
 
 ---
 
 📂 Estrutura do projeto
 
 app/
-├── main.py
-├── database.py
-├── models/
-│ └── product.py
-├── schemas/
-│ └── product.py
-├── services/
-│ └── product_service.py
+ ├── main.py
+ ├── database.py
+ ├── models/
+ │ └── product.py
+ ├── schemas/
+ │ └── product.py
+ └── services/
+      └── product_service.py
 
 ---
 
-⚙️ Como rodar o projeto
+▶️ Como rodar o projeto
 
-1. Clonar o repositório
-
-git clone https://github.com/gadielalmeida/api-estoque.git
-
-2. Acessar a pasta
-
-cd nome-do-projeto
-
-3. Criar ambiente virtual
-
+# Criar ambiente virtual
 python -m venv venv
 
-4. Ativar o ambiente virtual
-
-Windows:
-
+# Ativar ambiente (Windows)
 venv\Scripts\activate
 
-5. Instalar dependências
-
+# Instalar dependências
 pip install fastapi uvicorn sqlalchemy
 
-6. Rodar a API
-
+# Rodar servidor
 uvicorn app.main:app --reload
 
 ---
 
-📖 Documentação da API
+📌 Acessar documentação
 
-Após iniciar o servidor, acesse:
+Após rodar o servidor:
 
-http://127.0.0.1:8000/docs
-
----
-
-🔌 Endpoints principais
-
-Método| Endpoint| Descrição
-GET| /products| Listar produtos
-GET| /products/{id}| Buscar produto por ID
-POST| /products| Criar produto
-PUT| /products/{id}| Atualizar produto
-DELETE| /products/{id}| Deletar produto
+👉 http://127.0.0.1:8000/docs
 
 ---
 
-💡 Exemplo de requisição
+🔎 Listar produtos
 
-Criar produto
+GET /products
 
-POST /products
+Parâmetros:
+
+Parâmetro| Tipo| Descrição
+page| int| Número da página (default: 1)
+limit| int| Itens por página (default: 10, máximo: 100)
+name| string| Filtro por nome do produto
+sort| string| Ordenação dos resultados
+
+Exemplos de ordenação:
+
+- "price"
+- "price_desc"
+- "quantity"
+- "quantity_desc"
+- "name"
+- "name_desc"
+
+---
+
+📌 Exemplo de resposta
 
 {
-  "name": "Mouse",
-  "quantity": 10,
-  "price": 59.90
+  "total": 1,
+  "page": 1,
+  "limit": 10,
+  "data": [
+    {
+      "id": 1,
+      "name": "Mouse",
+      "quantity": 20,
+      "price": 59.9
+    }
+  ]
 }
 
 ---
 
-🎯 Objetivo do projeto
+🧠 Conceitos aplicados
 
-Este projeto foi desenvolvido com o objetivo de praticar desenvolvimento backend utilizando Python, criação de APIs REST e integração com banco de dados.
+- Arquitetura em camadas (models, schemas, services)
+- Boas práticas REST
+- Separação de responsabilidades
+- Paginação de dados
+- Filtros dinâmicos via query params
+- Ordenação de resultados
+- Integração com banco de dados via ORM
 
 ---
 
-📈 Próximas melhorias
+📈 Melhorias futuras
 
-- Paginação de produtos
-- Filtros de busca
-- Ordenação
-- Autenticação de usuários (JWT)
+- Autenticação com JWT
 - Banco de dados PostgreSQL
+- Docker
+- Testes automatizados
+- Deploy na nuvem (Render, Railway ou AWS)
 
 ---
 
 👨‍💻 Autor
 
-Gadiel Almeida
-GitHub: https://github.com/gadielalmeida
+Desenvolvido por Gadiel Almeida
